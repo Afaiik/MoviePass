@@ -1,0 +1,148 @@
+.tickets-container {
+
+}
+
+.ticket-item {
+width: 85%;
+min-height: calc(18em);
+margin: 0 auto;
+border-top: 1px solid white;
+border-bottom: 1px solid white;
+}
+
+.cardWrap-ticket {
+width: 27em;
+margin: 3em auto;
+color: #fff;
+font-family: sans-serif;
+}
+
+.card-ticket {
+background: linear-gradient(to bottom, #3BE0DC 0%, #3BE0DC 26%, #ecedef 26%, #ecedef 100%);
+height: 14em;
+float: left;
+position: relative;
+padding: 1em;
+margin-top: -15px;
+}
+
+.cardLeft-ticket {
+border-top-left-radius: 8px;
+border-bottom-left-radius: 8px;
+width: 16em;
+}
+
+.cardRight-ticket {
+width: 9em;
+border-left: .18em dashed #242424;
+border-top-right-radius: 8px;
+border-bottom-right-radius: 8px;
+}
+.cardRight-ticket:before, .cardRight-ticket:after {
+content: "";
+position: absolute;
+display: block;
+width: .9em;
+height: .9em;
+background: #242424;
+border-radius: 50%;
+left: -.5em;
+}
+.cardRight-ticket:before {
+    top: -.4em;
+}
+.cardRight-ticket:after {
+    bottom: -.4em;
+}
+
+.h1-ticket {
+    font-size: 1.4em;
+    margin-top: 0;
+    color: #242424;
+    font-family: 'Bebas Neue', cursive !important;
+}
+.h1-ticket .h1-span-ticket {
+    font-weight: 500;
+}
+
+.title-ticket, .name-ticket, .seat-ticket, .time-ticket {
+text-transform: uppercase;
+font-weight: normal;
+}
+.title-ticket .h2-ticket, .name-ticket .h2-ticket, .seat-ticket .h2-ticket, .time-ticket .h2-ticket {
+font-size: .9em;
+color: #525252;
+margin: 0;
+}
+.title-ticket span, .name-ticket span, .seat-ticket span, .time-ticket span {
+font-size: .7em;
+color: #a2aeae;
+}
+
+.title-ticket {
+margin: 2em 0 0 0;
+}
+
+.name-ticket, .seat-ticket {
+margin: .7em 0 0 0;
+}
+
+.time-ticket {
+margin: .7em 0 0 1em;
+}
+
+.seat-ticket, .time-ticket {
+float: left;
+}
+
+.eye-ticket {
+position: relative;
+width: 2em;
+height: 1.5em;
+background: #fff;
+margin: 0 auto;
+border-radius: 1em/0.6em;
+z-index: 1;
+}
+.eye-ticket:before, .eye-ticket:after {
+content: "";
+display: block;
+position: absolute;
+border-radius: 50%;
+}
+.eye-ticket:before {
+width: 1em;
+height: 1em;
+background: #3BE0DC;
+z-index: 2;
+left: 8px;
+top: 4px;
+}
+.eye-ticket:after {
+width: .5em;
+height: .5em;
+background: #fff;
+z-index: 3;
+left: 12px;
+top: 8px;
+}
+
+.number-ticket {
+    margin-top: 40%;
+    text-align: center;
+    text-transform: uppercase;
+}
+.number-ticket h3 {
+color: #242424;
+margin: .9em 0 0 0;
+font-size: 2.5em;
+}
+.number-ticket span {
+display: block;
+color: #a2aeae;
+}
+
+.ticket-qr {
+    margin-top: 2%;
+}
+
