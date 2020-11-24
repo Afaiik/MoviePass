@@ -203,6 +203,7 @@
 
 
                 Linkear funcionalidad de updatear peliculas desde la API -->
+                
             </div>   
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>

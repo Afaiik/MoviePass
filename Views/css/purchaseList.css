@@ -83,7 +83,9 @@
     margin: auto 5% auto 0;
 }
 
-.purchase-btn {
+.purchase-btn, .purchase-btn:active, .purchase-btn:focus, .purchase-btn:hover {
+    text-decoration: none;
+    text-align: center;
     display: block;
     margin: 5% 0 5% 0;
     padding: 1% 5%;

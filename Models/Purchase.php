@@ -9,6 +9,9 @@ class Purchase{
     private $userId;
     private $datePurchase;
 
+    //Not Mapped
+    private $show;
+
     public function getId()
     {
         return $this->id;
@@ -53,6 +56,18 @@ class Purchase{
     public function setDatePurchase($datePurchase)
     {
         $this->datePurchase = $datePurchase;
+
+        return $this;
+    }
+
+    public function getShow()
+    {
+        return $this->show;
+    }
+
+    public function setShow($show)
+    {
+        $this->show = $show;
 
         return $this;
     }

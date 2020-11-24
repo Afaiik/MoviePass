@@ -37,28 +37,41 @@
                     <!--Listado de Compras-->
                     <div class="row">
                         <div class="purchase-list">
-                           
-                                    <!--Items de Compras-->
-                                    <div class="purchase-item">
-                                        <div class="column-1">
-                                            <h3>Titulo Pelicula</h3>
-                                            <br />
-                                            <p>
-                                                Descripcion pelicula Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo quos, in nemo cum aut earum eum enim quibusdam repellat. 
-                                                Eos qui omnis suscipit deleniti cumque molestias sint iste voluptas quae?
-                                            </p>
-                                            <br />
-                                            <p>Cine: Los gallegos</p>
-                                            <p>Horario: 22:30</p>
-                                            <p>Fecha: 22 de diciembre</p>
-                                            <button type="submit" class="purchase-btn">Ver Compra</button>
-                                        </div>
-                                        <div class="column-2">                            
-                                            <img class="purchase-img" src="<?= IMG_LINK_W500 ?>/h8Rb9gBr48ODIwYUttZNYeMWeUU.jpg" width="195" height="275" />
-                                        </div>
+                            <?php
+                                
+                                foreach ($purchases as $key) {
+                            ?>
+                                <!--Items de Compras-->
+                                <div class="purchase-item">
+                                    <div class="column-1">
+                                        <h3><?= $key->getShow()->getMovie()->getTitle()?></h3>
+                                        <br />
+                                        <p>
+                                            <?= $key->getShow()->getMovie()->getDescription()?>
+                                        </p>
+                                        <br />
+                                        <p>Cine: <?= $key->getShow()->getCinema()->getName()?></p>
+                                        <p>Sala: <?= $key->getShow()->getRoom()->getName()?></p>
+                                        <p>Horario de inicio: <?= $key->getShow()->getDateTimeFrom()?></p>
+                                        <p>Horario de finalización: <?= $key->getShow()->getDateTimeTo()?></p>
+                                        <a type="button" title="Ver Tickets" href="<?= FRONT_ROOT ?>Purchase/ViewTickets?purchaseId=<?= $key->getId() ?>" class="purchase-btn">Ver Compra</a>
                                     </div>
-                            
-
+                                    <div class="column-2">                            
+                                        <img class="purchase-img" src="<?= IMG_LINK_W500 . $key->getShow()->getMovie()->getImgLink()?>" width="195" height="275" />
+                                    </div>
+                                </div>
+                            <?php                                
+                            }
+                            ?>
+                            <?php
+                            if (count($purchases) == 0) {
+                            ?>
+                                <div class="basic-font">
+                                    No se encontraron resultados :(
+                                </div>
+                            <?php
+                            }
+                            ?>
 
                         </div>
                     </div>

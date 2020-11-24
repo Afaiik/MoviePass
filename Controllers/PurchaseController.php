@@ -21,16 +21,34 @@
         public function Index($deleteMsg = "", $successMsg = "")
         {
             Utils::CheckSession();
+            $purchaseRepo = new PurchaseRepository();
+            $showRepo = new ShowRepository();
 
-            // $cineRepo = new CinemaRepository();
-            // $cityRepo = new CityRepository();
-
-            // $cinemas = $cineRepo->GetAll();
-
-            // $cities = $cityRepo->GetAll();
+            if(isset($_SESSION["esAdmin"]) && $_SESSION['esAdmin']){
+                Utils::CheckAdmin();
+                $purchases = $purchaseRepo->GetAll();
+                
+                foreach($purchases as $purchase) {
+                    
+                    $show = $showRepo->GetById($purchase->getShowId());
+                    $show = $this->GetShowDetails($show);
+                    $purchase->setShow($show);
+                    
+                }
+            }
+            else {   
+                                
+                $purchases = $purchaseRepo->GetAllByUserId($_SESSION['userId']);
+                
+                foreach($purchases as $purchase) {
+                    
+                    $show = $showRepo->GetById($purchase->getShowId());
+                    $show = $this->GetShowDetails($show);
+                    $purchase->setShow($show);
+                    
+                }
+            }
             
-            $purchases =  array();
-
             require_once(VIEWS_PATH."purchaseList.php");
         }        
         
@@ -118,6 +136,27 @@
                 
             }
         }
+
+        public function ViewTickets()
+        {
+            Utils::CheckSession();
+            if(isset($_GET['purchaseId'])){
+                $purchaseId = Utils::CleanInput($_GET['purchaseId']);
+                
+                $purchaseRepo = new PurchaseRepository();
+                $purchase = $purchaseRepo->GetById($purchaseId);
+                
+                $showRepo = new ShowRepository();
+                $show = $showRepo->GetById($purchase->getShowId());
+                $show = $this->GetShowDetails($show);
+
+                $cantTickets = 1;
+                $totalPrice = 1;
+
+                
+                include_once(VIEWS_PATH."tickets.php");
+            }
+        }  
 
     }
 ?>

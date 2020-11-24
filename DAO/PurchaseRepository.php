@@ -30,6 +30,24 @@ class PurchaseRepository implements IPurchaseRepository{
         }
     }
 
+    public function GetAllByUserId($userId)
+    {
+        try
+        {
+            $ret = array();
+            $query = "SELECT * FROM " . $this->tableName . " WHERE USER_ID = :userId ;";
+            $parameters['userId'] = $userId;
+            $this->connection = Connection::GetInstance();
+            $queryResult = $this->connection->Execute($query, $parameters);
+            
+            $ret = Purchase::mapData($queryResult);
+
+            return $ret;
+        }catch(Exception $ex){
+            throw $ex;
+        }
+    }
+
     public function GetById($id)
     {
         try
