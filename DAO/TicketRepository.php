@@ -75,6 +75,7 @@ class TicketRepository implements ITicketRepository{
     function UpdateQrFileName($ticketId, $qrFileName){
         try
         {
+
             $query = 'UPDATE ' . $this->tableName . ' SET QR_FILE_NAME = :qrFileName WHERE ID = :ticketId;';
            
             $parameters['qrFileName'] = $qrFileName;
@@ -83,6 +84,27 @@ class TicketRepository implements ITicketRepository{
             $this->connection = Connection::GetInstance();
             
             $this->connection->ExecuteNonQuery($query, $parameters);
+
+        }catch(Exception $ex){
+            return "Ha ocurrido un error :( " . $ex->getMessage();
+        }
+ 
+    }
+
+    function GetTicketsByPurchaseId($purchaseId){
+        try
+        {
+            $query = 'SELECT * FROM TICKET WHERE PURCHASE_ID = :purchaseId;';
+           
+            $parameters['purchaseId'] = $purchaseId;
+
+            $this->connection = Connection::GetInstance();
+            
+            $queryResult = $this->connection->Execute($query, $parameters);
+            
+            $ret = Ticket::mapData($queryResult);
+
+            return $ret;
 
         }catch(Exception $ex){
             return "Ha ocurrido un error :( " . $ex->getMessage();
